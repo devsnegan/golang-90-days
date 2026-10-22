@@ -69,6 +69,5 @@ Operators are used in backend development for:
 ## Progress
 
 - [x] Day 7: Operators in Go
-- [ ] Day 8: if / else / switch
 
 Repository: [golang-90-days](https://github.com/devsnegan/golang-90-days)
