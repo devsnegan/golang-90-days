@@ -1,79 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-// Interface declaration
-type Animal interface {
-	Sound()
+type Shape interface {
+	Area() float64
 }
 
-// Concrete types
-type Dog struct{}
-type Cat struct{}
-type Cow struct{}
-
-// Dog implements Animal
-func (d Dog) Sound() {
-	fmt.Println("Dog barks")
+type Rectangle struct {
+	Length float64
+	Width  float64
 }
 
-// Cat implements Animal
-func (c Cat) Sound() {
-	fmt.Println("Cat meows")
+type Circle struct {
+	Radius float64
 }
 
-// Cow implements Animal
-func (c Cow) Sound() {
-	fmt.Println("Cow moos")
+func (r Rectangle) Area() float64 {
+	return r.Length * r.Width
 }
 
-// Function accepts any type satisfying Animal
-func MakeSound(a Animal) {
-	a.Sound()
-}
-
-// Interface with a pointer receiver implementation
-type Printer interface {
-	Print()
-}
-
-type Document struct {
-	Name string
-}
-
-func (d *Document) Print() {
-	fmt.Println("Printing document:", d.Name)
+func (c Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
 }
 
 func main() {
-	fmt.Println("=== Multiple Types, One Interface ===")
+	var shape Shape
 
-	MakeSound(Dog{})
-	MakeSound(Cat{})
-	MakeSound(Cow{})
+	shape = Rectangle{Length: 10, Width: 5}
+	fmt.Printf("Rectangle Area: %.2f\n", shape.Area())
 
-	fmt.Println("\n=== Interface Variable ===")
-
-	var animal Animal
-
-	animal = Dog{}
-	fmt.Println("Dog assigned to Animal interface")
-	animal.Sound()
-
-	animal = Cat{}
-	fmt.Println("Cat assigned to Animal interface")
-	animal.Sound()
-
-	fmt.Println("\n=== Nil Interface ===")
-
-	var emptyAnimal Animal
-	fmt.Println("Is interface nil?", emptyAnimal == nil)
-
-	fmt.Println("\n=== Pointer Receiver ===")
-
-	document := Document{Name: "Go Interfaces"}
-	var printer Printer
-
-	printer = &document
-	printer.Print()
+	shape = Circle{Radius: 7}
+	fmt.Printf("Circle Area: %.2f\n", shape.Area())
 }
