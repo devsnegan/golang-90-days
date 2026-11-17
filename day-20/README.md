@@ -97,6 +97,6 @@ func greet(message string, names ...string) {
 
 Variadic functions make Go functions flexible by allowing them to accept a variable number of arguments.
 
-**Day 15 completed – Phase 1: Go Fundamentals completed!**
+**Day 15 completed – Phase 1: Go Fundamentals completed!**-
 
 Next: Phase 1 Mini Project – CLI Student Management System.
